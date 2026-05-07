@@ -1,4 +1,6 @@
 import org.gradle.api.tasks.SourceSetContainer
+import org.gradle.api.tasks.bundling.Jar
+import org.gradle.api.file.DuplicatesStrategy
 
 plugins {
     java
@@ -45,11 +47,11 @@ project(":paper") {
 
     tasks.named<Jar>("jar") {
         archiveBaseName.set("McAuth-Paper")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         from(project(":core").extensions.getByType<SourceSetContainer>().named("main").get().output)
-    }
-
-    tasks.named("compileJava") {
-        dependsOn(":core:classes")
+        from({
+            configurations.compileClasspath.get().filter { it.path.contains("jackson") || it.path.contains("commons-codec") }.map { zipTree(it) }
+        })
     }
 }
 
@@ -61,7 +63,11 @@ project(":velocity") {
 
     tasks.named<Jar>("jar") {
         archiveBaseName.set("McAuth-Velocity")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         from(project(":core").extensions.getByType<SourceSetContainer>().named("main").get().output)
+        from({
+            configurations.runtimeClasspath.get().filter { it.path.contains("jackson") || it.path.contains("commons-codec") }.map { zipTree(it) }
+        })
     }
 
     tasks.named("compileJava") {
@@ -77,7 +83,11 @@ project(":bungee") {
 
     tasks.named<Jar>("jar") {
         archiveBaseName.set("McAuth-Bungee")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         from(project(":core").extensions.getByType<SourceSetContainer>().named("main").get().output)
+        from({
+            configurations.runtimeClasspath.get().filter { it.path.contains("jackson") || it.path.contains("commons-codec") }.map { zipTree(it) }
+        })
     }
 
     tasks.named("compileJava") {
