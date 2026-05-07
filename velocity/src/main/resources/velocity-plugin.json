@@ -1,0 +1,8 @@
+{
+  "id": "mcauth",
+  "name": "MCAuth",
+  "version": "1.0.0",
+  "main": "com.gidexplayyt.mcauth.velocity.VelocityAuthPlugin",
+  "authors": ["GidexPlayYT"],
+  "depends": []
+}

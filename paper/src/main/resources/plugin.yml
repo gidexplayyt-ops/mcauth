@@ -1,0 +1,14 @@
+name: MCAuth
+main: com.gidexplayyt.mcauth.paper.PaperAuthPlugin
+version: 1.0.0
+author: GidexPlayYT
+api-version: 1.20
+commands:
+  mcauth:
+    description: Основная команда MCAuth
+    usage: /mcauth <register|login|link|confirm|code|status|license|admin>
+    aliases: [reg, register, l, login, link, confirm, status, license, code]
+permissions:
+  mcauth.admin:
+    description: Разрешение на админ-команды MCAuth
+    default: op

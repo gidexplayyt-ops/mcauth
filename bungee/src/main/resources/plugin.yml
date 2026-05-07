@@ -1,0 +1,8 @@
+name: MCAuthBungee
+main: com.gidexplayyt.mcauth.bungee.BungeeAuthPlugin
+version: 1.0.0
+author: GidexPlayYT
+commands:
+  mcauth:
+    description: Основная команда MCAuth для BungeeCord
+    usage: /mcauth

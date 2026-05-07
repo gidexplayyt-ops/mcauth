@@ -1,0 +1,6 @@
+telegram-token: ""
+vk-token: ""
+vk-api-version: "5.131"
+discord-token: ""
+google-authenticator-issuer: "MCAuth"
+license-bypass: true
