@@ -3,6 +3,7 @@ package com.gidexplayyt.mcauth.paper;
 import com.gidexplayyt.mcauth.core.AccountData;
 import com.gidexplayyt.mcauth.core.AuthManager;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
@@ -55,7 +56,7 @@ public class AuthListener implements Listener {
 
     private void startBossBar(Player player) {
         stopBossBar(player.getUniqueId());
-        BossBar bossBar = Bukkit.createBossBar("§9Вход в течение 5 минут", BarColor.BLUE, BarStyle.SOLID);
+        BossBar bossBar = Bukkit.createBossBar(new NamespacedKey(plugin, "auth_bossbar"), "Вход в течение 5 минут", BarColor.BLUE, BarStyle.SOLID);
         bossBar.addPlayer(player);
         BossBarSession session = new BossBarSession(bossBar, 300);
         session.taskId = new BukkitRunnable() {

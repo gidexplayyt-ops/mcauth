@@ -4,6 +4,7 @@ import com.gidexplayyt.mcauth.core.AuthManager;
 import com.gidexplayyt.mcauth.core.BotIntegrationService;
 import com.gidexplayyt.mcauth.core.JsonAuthStorage;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -26,7 +27,7 @@ public class BungeeAuthPlugin extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new Command("mcauth") {
             @Override
             public void execute(CommandSender sender, String[] args) {
-                sender.sendMessage("MCAuth BungeeCord служит мостом и использует ядро регистрации в Paper/Spigot.");
+                sender.sendMessage(new TextComponent("MCAuth BungeeCord служит мостом и использует ядро регистрации в Paper/Spigot."));
             }
         });
     }

@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.SourceSetContainer
+
 plugins {
     java
 }
@@ -43,6 +45,11 @@ project(":paper") {
 
     tasks.named<Jar>("jar") {
         archiveBaseName.set("McAuth-Paper")
+        from(project(":core").extensions.getByType<SourceSetContainer>().named("main").get().output)
+    }
+
+    tasks.named("compileJava") {
+        dependsOn(":core:classes")
     }
 }
 
@@ -54,6 +61,11 @@ project(":velocity") {
 
     tasks.named<Jar>("jar") {
         archiveBaseName.set("McAuth-Velocity")
+        from(project(":core").extensions.getByType<SourceSetContainer>().named("main").get().output)
+    }
+
+    tasks.named("compileJava") {
+        dependsOn(":core:classes")
     }
 }
 
@@ -65,6 +77,11 @@ project(":bungee") {
 
     tasks.named<Jar>("jar") {
         archiveBaseName.set("McAuth-Bungee")
+        from(project(":core").extensions.getByType<SourceSetContainer>().named("main").get().output)
+    }
+
+    tasks.named("compileJava") {
+        dependsOn(":core:classes")
     }
 }
 
